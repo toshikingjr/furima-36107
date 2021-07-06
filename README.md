@@ -30,7 +30,7 @@ has_many :purchases
 |status_id          |integer    |null: false                     |
 |shipping_charge_id |integer    |null: false                     |
 |shipping_area_id   |integer    |null: false                     |
-|days_to_ship       |integer    |null: false                     |
+|days_to_ship_id    |integer    |null: false                     |
 |price              |integer    |null: false                     |
 |user               |references |null: false, foreign_key: true  |
 
