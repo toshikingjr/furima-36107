@@ -11,7 +11,7 @@
 |last_name           |string   |null: false               |
 |furigana_first_name |string   |null: false               |
 |furigana_last_name  |string   |null: false               |
-|birth_date          |integer  |null: false               |
+|birth_date          |date     |null: false               |
 
 
 ### Association
@@ -60,7 +60,7 @@ has_one :receiver_address
 |prefecture_id  |integer    |null: false                     |
 |city           |string     |null: false                     |
 |address        |string     |null: false                     |
-|building       |string     |null: false                     |
+|building       |string     |                                |
 |phone_number   |string     |null: false                     |
 |purchase       |references |null: false, foreign_key: true  |
 
