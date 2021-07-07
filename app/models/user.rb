@@ -16,8 +16,8 @@ class User < ApplicationRecord
       validates :last_name
     end
     with_options format: { with: FURIGANA_REGEX} do
-      validates :furigana_first_name, format: { with: FURIGANA_REGEX}
-      validates :furigana_last_name, format: { with: FURIGANA_REGEX}
+      validates :furigana_first_name
+      validates :furigana_last_name
     end
   end
 end
