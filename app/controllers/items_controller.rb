@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :move_to_session, only: [:new, :create]
   def index
     @items = Item.includes(:user)
   end
@@ -20,5 +21,11 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :explanation, :category_id, :status_id, :shipping_charge_id, :prefecture_id, :days_to_ship_id, :price).merge(user_id: current_user.id)
+  end
+
+  def move_to_session
+    unless user_signed_in?
+      redirect_to new_user_session_path
+    end
   end
 end
