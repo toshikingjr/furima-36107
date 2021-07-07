@@ -20,4 +20,6 @@ class User < ApplicationRecord
       validates :furigana_last_name
     end
   end
+
+  has_many :items
 end
