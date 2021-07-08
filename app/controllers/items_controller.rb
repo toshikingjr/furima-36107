@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :move_to_session, only: [:new, :create]
   def index
-    @items = Item.includes(:user)
+
   end
   
   def new
