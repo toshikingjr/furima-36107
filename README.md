@@ -52,7 +52,7 @@ belongs_to :user
 belongs_to :item
 has_one :receiver_address
 
-## receiver_addressesテーブル
+## addressesテーブル
 
 |columns        |type       |options                         |
 |---------------|-----------|--------------------------------|
