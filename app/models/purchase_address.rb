@@ -4,10 +4,13 @@ class PurchaseAddress
   attr_accessor :postal_code, :prefecture_id, :city, :address, :building, :phone_number, :token, :user_id, :item_id
 
   with_options presence: true do
-    validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/}
+    validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/ }
     validates :city
     validates :address
-    validates :phone_number, format: {with: /\A\d{10,11}\z/}
+    validates :phone_number, format: {with: /\A\d{10}$|^\d{11}\z/ }, numericality: true
+    validates :token
+    validates :user_id
+    validates :item_id
   end
   validates :prefecture_id, numericality: { other_than: 1 }
 
