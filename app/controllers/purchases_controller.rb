@@ -1,4 +1,8 @@
 class PurchasesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :own_purchase
+  before_action :already_purchase
+
   def index
     @purchase_address = PurchaseAddress.new
     @item = Item.find(params[:item_id])
@@ -29,5 +33,19 @@ class PurchasesController < ApplicationController
         card: purchase_params[:token],
         currency: 'jpy'
       )
+  end
+
+  def own_purchase
+    @item = Item.find(params[:item_id])
+    if current_user.id == @item.user_id
+      redirect_to root_path
+    end
+  end
+
+  def already_purchase
+    @item = Item.find(params[:item_id])
+    if @item.purchase != nil
+      redirect_to root_path
+    end
   end
 end
