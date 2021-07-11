@@ -35,7 +35,7 @@ RSpec.describe PurchaseAddress, type: :model do
         expect(@purchase_address.errors.full_messages).to include('Postal code is invalid')
       end
       it '都道府県を選択しないと購入できない' do
-        @purchase_address.prefecture_id = '1'
+        @purchase_address.prefecture_id = 1
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include('Prefecture must be other than 1')
       end
@@ -55,12 +55,12 @@ RSpec.describe PurchaseAddress, type: :model do
         expect(@purchase_address.errors.full_messages).to include("Phone number can't be blank", 'Phone number is invalid')
       end
       it '電話番号が９桁以下だと登録できない' do
-        @purchase_address.phone_number = '111111111'
+        @purchase_address.phone_number = 111111111
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include('Phone number is invalid')
       end
       it '電話番号が１２桁以上だと登録できない' do
-        @purchase_address.phone_number = '111111111111'
+        @purchase_address.phone_number = 111111111111
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include('Phone number is invalid')
       end
@@ -69,6 +69,13 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include('Phone number is invalid')
       end
+
+      it '電話番号が英数混合だと登録できない' do
+        @purchase_address.phone_number = '1111aaaa11'
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include('Phone number is invalid')
+      end
+
       it 'ユーザーidがないと登録できない' do
         @purchase_address.user_id = nil
         @purchase_address.valid?
