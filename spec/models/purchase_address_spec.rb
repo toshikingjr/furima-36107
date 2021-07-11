@@ -76,7 +76,7 @@ RSpec.describe PurchaseAddress, type: :model do
         expect(@purchase_address.errors.full_messages).to include('Phone number is invalid')
       end
 
-      it 'ユーザーidがないと登録できない' do
+      it 'user_idがないと登録できない' do
         @purchase_address.user_id = nil
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("User can't be blank")
